@@ -1,10 +1,16 @@
-import java.math.BigInteger;
-
+/**
+ * 2. Add Two Numbers
+ * 
+ * You are given two non-empty linked lists representing two non-negative
+ * integers. The digits are stored in reverse order, and each of their nodes
+ * contains a single digit. Add the two numbers and return the sum as a linked
+ * list.
+ */
 public class No002 {
 
     public void run() {
-        ListNode l1 = buildList(new BigInteger("342"));
-        ListNode l2 = buildList(new BigInteger("465"));
+        ListNode l1 = buildList(new int[] { 3, 4, 2 });
+        ListNode l2 = buildList(new int[] { 4, 6, 5 });
 
         ListNode result = addTwoNumbers(l1, l2);
         while (true) {
@@ -21,56 +27,50 @@ public class No002 {
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        BigInteger num1 = readNum(l1);
-        BigInteger num2 = readNum(l2);
+        ListNode head = l1;
 
-        return buildList(num1.add(num2));
-    }
-
-    public BigInteger readNum(ListNode l) {
-        BigInteger big10 = new BigInteger("10");
-
-        BigInteger num = new BigInteger("0");
-        BigInteger n = new BigInteger("1");
+        int flag = 0;
         while (true) {
-            num = num.add(new BigInteger(String.valueOf(l.val)).multiply(n));
-            n = n.multiply(big10);
+            int val = l1.val + l2.val + flag;
 
-            if (l.next != null) {
-                l = l.next;
+            if (val >= 10) {
+                flag = val / 10;
+                val = val % 10;
             } else {
-                break;
+                flag = 0;
             }
+            l1.val = val;
+
+            if (l1.next == null && l2.next == null) {
+                if (flag > 0) {
+                    l1.next = new ListNode(flag);
+                }
+                break;
+            } else if (l1.next == null) {
+                l1.next = new ListNode(flag);
+            } else if (l2.next == null) {
+                l2.next = new ListNode(0);
+            }
+            l1 = l1.next;
+            l2 = l2.next;
         }
 
-        return num;
+        return head;
     }
 
-    public ListNode buildList(BigInteger total) {
-        if (total.equals(new BigInteger("0"))) {
-            return new ListNode(0);
-        }
-
-        BigInteger big10 = new BigInteger("10");
-        BigInteger big0 = new BigInteger("0");
-
+    public ListNode buildList(int[] num) {
         ListNode head, point;
-        BigInteger[] temp = total.divideAndRemainder(big10);
-        head = new ListNode(temp[1].intValue());
-        total = temp[0];
+        head = new ListNode(num[0]);
         point = head;
 
-        while (total.compareTo(big0)>0) {
-            temp = total.divideAndRemainder(big10);
-            ListNode node = new ListNode(temp[1].intValue());
-            total = temp[0];
+        for (int i = 1; i < num.length; i++) {
+            ListNode node = new ListNode(num[i]);
             point.next = node;
             point = node;
         }
 
         return head;
     }
-
 
     public class ListNode {
         int val;
