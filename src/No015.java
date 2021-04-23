@@ -24,7 +24,7 @@ public class No015 {
         StringBuilder builder = new StringBuilder("[");
         for (List<Integer> list : result) {
             builder.append("[");
-            builder.append(list.get(0)).append(",").append(list.get(1)).append(",").append(list.get(2))
+            builder.append(list.get(0)).append(",").append(list.get(1)).append(",").append(list.get(2));
             builder.append("]");
             builder.append(',');
         }
