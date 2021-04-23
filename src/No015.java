@@ -14,16 +14,30 @@ import java.util.List;
 public class No015 {
 
     public void run() {
-        List<List<Integer>> result = threeSum(new int[] { -1, 0, 1, 2, -1, -4 });
+        // Input
+        int[] nums = new int[] { -1, 0, 1, 2, -1, -4 };
 
-        System.out.print("[");
+        // Solution
+        List<List<Integer>> result = threeSum(nums);
+
+        // Output
+        StringBuilder builder = new StringBuilder("[");
         for (List<Integer> list : result) {
-            System.out.print("[" + list.get(0) + "," + list.get(1) + "," + list.get(2) + "], ");
+            builder.append("[");
+            builder.append(list.get(0)).append(",").append(list.get(1)).append(",").append(list.get(2))
+            builder.append("]");
+            builder.append(',');
         }
-        System.out.print("]");
-        System.out.println();
+        if (builder.toString().endsWith(",")) {
+            builder.deleteCharAt(builder.length() - 1);
+        }
+        builder.append("]");
+        System.out.println(builder.toString());
     }
 
+    /**
+     * Solution
+     */
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
 
