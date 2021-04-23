@@ -12,23 +12,14 @@ public class No002 {
 
     public void run() {
         // Input
-        ListNode l1 = buildList(new int[] { 3, 4, 2 });
-        ListNode l2 = buildList(new int[] { 4, 6, 5 });
+        ListNode l1 = ListNode.buildListFromArray(new int[] { 3, 4, 2 });
+        ListNode l2 = ListNode.buildListFromArray(new int[] { 4, 6, 5 });
 
         // Solution
         ListNode result = addTwoNumbers(l1, l2);
 
         // Output
-        StringBuilder builder = new StringBuilder("[");
-        while (result != null) {
-            builder.append(result.val).append(",");
-            result = result.next;
-        }
-        if (builder.toString().endsWith(",")) {
-            builder.deleteCharAt(builder.length() - 1);
-        }
-        builder.append("]");
-        System.out.println(builder.toString());
+        ListNode.printList(result);
     }
 
     /**
@@ -61,20 +52,6 @@ public class No002 {
             }
             l1 = l1.next;
             l2 = l2.next;
-        }
-
-        return head;
-    }
-
-    public ListNode buildList(int[] num) {
-        ListNode head, point;
-
-        head = new ListNode(num[0]);
-        point = head;
-        for (int i = 1; i < num.length; i++) {
-            ListNode node = new ListNode(num[i]);
-            point.next = node;
-            point = node;
         }
 
         return head;
