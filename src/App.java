@@ -1,5 +1,5 @@
 public class App {
-    
+
     public static void main(String[] args) throws Exception {
         // No. 001
         No001 no001 = new No001();
@@ -20,6 +20,10 @@ public class App {
         // No.015
         No015 no015 = new No015();
         no015.run();
+
+        // No.019
+        No019 no019 = new No019();
+        no019.run();
     }
 
 }
