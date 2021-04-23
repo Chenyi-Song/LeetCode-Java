@@ -1,3 +1,5 @@
+import datastructure.ListNode;
+
 /**
  * 2. Add Two Numbers
  * 
@@ -9,23 +11,29 @@
 public class No002 {
 
     public void run() {
+        // Input
         ListNode l1 = buildList(new int[] { 3, 4, 2 });
         ListNode l2 = buildList(new int[] { 4, 6, 5 });
 
+        // Solution
         ListNode result = addTwoNumbers(l1, l2);
-        while (true) {
-            System.out.print(result.val);
 
-            if (result.next == null) {
-                System.out.println();
-                break;
-            } else {
-                System.out.print(", ");
-                result = result.next;
-            }
+        // Output
+        StringBuilder builder = new StringBuilder("[");
+        while (result != null) {
+            builder.append(result.val).append(",");
+            result = result.next;
         }
+        if (builder.toString().endsWith(",")) {
+            builder.deleteCharAt(builder.length() - 1);
+        }
+        builder.append("]");
+        System.out.println(builder.toString());
     }
 
+    /**
+     * Solution
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode head = l1;
 
@@ -60,9 +68,9 @@ public class No002 {
 
     public ListNode buildList(int[] num) {
         ListNode head, point;
+
         head = new ListNode(num[0]);
         point = head;
-
         for (int i = 1; i < num.length; i++) {
             ListNode node = new ListNode(num[i]);
             point.next = node;
@@ -72,20 +80,4 @@ public class No002 {
         return head;
     }
 
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
-    }
 }

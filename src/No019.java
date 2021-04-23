@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+import datastructure.ListNode;
+
 /**
  * 19. Remove Nth Node From End of List
  * 
@@ -55,23 +57,6 @@ public class No019 {
         }
 
         return head;
-    }
-
-    public class ListNode {
-        int val;
-        ListNode next;
-
-        ListNode() {
-        }
-
-        ListNode(int val) {
-            this.val = val;
-        }
-
-        ListNode(int val, ListNode next) {
-            this.val = val;
-            this.next = next;
-        }
     }
 
 }
