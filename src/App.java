@@ -25,7 +25,11 @@ public class App {
         No019 no019 = new No019();
         no019.run();
 
-        // No.019
+        // No.020
+        No020 no020 = new No020();
+        no020.run();
+
+        // No.021
         No021 no021 = new No021();
         no021.run();
     }
