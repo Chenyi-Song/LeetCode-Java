@@ -32,6 +32,10 @@ public class App {
         // No.021
         No021 no021 = new No021();
         no021.run();
+
+        // No.022
+        No022 no022 = new No022();
+        no022.run();
     }
 
 }
